@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+}
+
+th,
+td {
+  padding: 9px;
+}
+
+.deleteRecipe {
+  background-color: red;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+a.deleteRecipe:link,
+a.deleteRecipe:visited {
+  color: white;
+}

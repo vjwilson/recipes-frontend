@@ -3,13 +3,21 @@
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react"
   ],
   "parserOptions": {
     "ecmaVersion": 7,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "env": {
+    "es6": true,
     "browser": true,
     "node": true,
     "mocha": true

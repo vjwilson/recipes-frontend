@@ -1,27 +1,32 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import RecipeList from './RecipeList';
+
+import {getRecipes} from '../api/recipeApi';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      recipes: this.props.recipes
+      recipes: []
     };
+  }
+
+  componentDidMount() {
+    getRecipes()
+      .then((results) => {
+        this.setState({recipes: results});
+    });
   }
 
   render() {
     return (
       <div className="container">
         <h1>Kirkpatrick Recipes</h1>
-        <RecipeList recipes={this.props.recipes} />
+        <RecipeList recipes={this.state.recipes} />
       </div>
     );
   }
 }
-
-App.propTypes = {
-  recipes: PropTypes.array.isRequired
-};
 
 export default App;

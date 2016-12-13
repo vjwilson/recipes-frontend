@@ -4,15 +4,15 @@ import Recipe from './Recipe';
 class RecipeList extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      recipes: this.props.recipes
-    };
   }
 
   render() {
-    const recipeList = this.props.recipes.map((recipe) => {
-      return <Recipe key={recipe.id} recipe={recipe} />;
+    const recipeList = this.props.recipes
+      .sort((recipe1, recipe2) => {
+        return (recipe1.name > recipe2.name) ? 1 : -1;
+      })
+      .map((recipe) => {
+        return <Recipe key={recipe.id} recipe={recipe} />;
     });
 
     return (

@@ -1,14 +1,11 @@
 import React, {PropTypes} from 'react';
+import ItemList from './ItemList/ItemList';
 
 import './card.css';
 
 class Recipe extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      recipes: this.props.recipe
-    };
   }
 
   render() {
@@ -20,7 +17,7 @@ class Recipe extends React.Component {
         </header>
         <div className="card__body">
           <h2>Ingredients</h2>
-          <p>{this.props.recipe.ingredients}</p>
+          <ItemList items={this.props.recipe.ingredients} />
           <h2>Directions</h2>
           <p>{this.props.recipe.directions}</p>
         </div>

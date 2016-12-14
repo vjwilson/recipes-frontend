@@ -1,7 +1,7 @@
 import React from 'react';
-import RecipeList from './RecipeList';
+import RecipeList from '../Recipe/RecipeList';
 
-import {getRecipes} from '../api/recipeApi';
+import {getRecipes} from '../../api/recipeApi';
 
 class App extends React.Component {
   constructor(props) {

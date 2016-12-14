@@ -41,6 +41,7 @@
   "homepage": "https://github.com/vjwilson/recipes-frontend#readme",
   "dependencies": {
     "babel-polyfill": "^6.13.0",
+    "whatwg-fetch": "2.0.0",
     "react": "15.0.2",
     "react-dom": "15.0.2"
   },

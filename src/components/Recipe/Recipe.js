@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
-import ItemList from './ItemList/ItemList';
+import ItemList from '../ItemList/ItemList';
 
-import './card.css';
+import '../common/card.css';
 
 class Recipe extends React.Component {
   constructor(props) {

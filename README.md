@@ -1,6 +1,6 @@
 # Recipes Frontend
 
-https://api.travis-ci.org/vjwilson/recipes-frontend.svg?branch=master
+<img src="https://api.travis-ci.org/vjwilson/recipes-frontend.svg?branch=master" alt="TravisCI build status tag" />
 
 This is the Node/Express API for a recipes app.
 

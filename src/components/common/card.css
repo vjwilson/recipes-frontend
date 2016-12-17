@@ -1,5 +1,6 @@
 .card-container {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 0;
@@ -12,14 +13,25 @@
 
 .card {
   border: 1px solid #000;
-  flex: 0 0 32%;
-  margin: 1% 0;
-  min-width: 300px;
+  flex: 0 1 auto;
+  margin-bottom: 1rem;
 }
 
-.card:nth-child(3n-1) {
-  margin-left: 2%;
-  margin-right: 2%;
+@media screen and (min-width: 768px) {
+  .card-container {
+    flex-direction: row;
+  }
+
+  .card {
+    flex: 0 0 32%;
+    margin: 1% 0;
+    min-width: 300px;
+  }
+
+  .card:nth-child(3n-1) {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
 }
 
 .card__header {

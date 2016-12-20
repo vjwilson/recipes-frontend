@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { searchRecipes } from './searchService';
 
-describe.only('searchRecipes', function() {
+describe('searchRecipes', function() {
   const allRecipes = [
     {
       id: 1,

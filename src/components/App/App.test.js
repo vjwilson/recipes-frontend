@@ -1,66 +1,29 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
-import App from './App';
-import fetchMock from 'fetch-mock';
+import App from './App'; //eslint-disable-line import/no-named-as-default
 
 describe('App component', function() {
 
-  const mockRecipes = [
-    {
-      id: 1,
-      name: 'B',
-      author: 'John Lennon',
-      ingredients: ['one', 'two', 'three'],
-      directions: 'Mix well. Chill.'
-    },
-    {
-      id: 2,
-      name: 'D',
-      author: 'Paul McCartney',
-      ingredients: ['one', 'two', 'three'],
-      directions: 'Mix in bowl. Cook for 1 hour.'
-    },
-    {
-      id: 3,
-      name: 'A',
-      author: 'George Harrison',
-      ingredients: ['one', 'two', 'three'],
-      directions: 'Combine ingredients.'
-    },
-    {
-      id: 4,
-      name: 'C',
-      author: 'Ringo Starr',
-      ingredients: ['one', 'two', 'three'],
-      directions: 'D is an unnamed extra.'
-    }
-  ];
-
   describe('initial render', function() {
-    beforeEach(function() {
-      fetchMock.get('*', mockRecipes);
-    });
 
-    afterEach(function() {
-      fetchMock.restore();
-    });
-
-    it('should render the static component', function() {
-      // sanity-check test
-      // does it "render without exploding"?
-      // see: https://gist.github.com/thevangelist/e2002bc6b9834def92d46e4d92f15874
-
+    it('should render the component', function() {
       const shallowOutput = shallow(<App />);
 
       expect(shallowOutput).to.have.length(1);
     });
 
-    it('should start with an empty state', function() {
-      const wrapper = mount(<App />);
+    it('should render any children passed in as props', function() {
+      const wrapper = mount(
+        <App>
+          <header>Headline</header>
+          <article>Foo</article>
+          <footer>Copyright</footer>
+        </App>
+      );
 
-      expect(wrapper.state().recipes).to.be.instanceof(Array);
-      expect(wrapper.state().recipes).to.have.lengthOf(0);
+      expect(wrapper.children()).to.have.length(3);
+      expect(wrapper.childAt(1).text()).contains('Foo');
     });
   });
 });

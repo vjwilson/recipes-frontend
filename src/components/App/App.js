@@ -1,50 +1,17 @@
-import React from 'react';
-import SearchBox from '../Search/SearchBox';
-import RecipeList from '../Recipe/RecipeList';
-import { searchRecipes } from '../Search/searchService';
+import React, {PropTypes} from 'react';
 
-import {getRecipes} from '../../api/recipeApi';
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      recipes: [],
-      searchOptions: {
-        searchString: ''
-      }
-    };
-
-    this.updateSearchState = this.updateSearchState.bind(this);
-  }
-
-  componentDidMount() {
-    getRecipes()
-      .then((results) => {
-        this.recipes = [...results];
-        this.setState({recipes: results});
-    });
-  }
-
-  updateSearchState(event) {
-    const field = event.target.name;
-    let options = this.state.searchOptions;
-    options[field] = event.target.value;
-    this.setState({ searchOptions: options });
-  }
-
+export class App extends React.Component {
   render() {
-    const visibleRecipes = searchRecipes(this.state.recipes, this.state.searchOptions);
-
     return (
-      <div className="container">
-        <h1>Kirkpatrick Recipes</h1>
-        <SearchBox searchOptions={this.state.searchOptions} onChange={this.updateSearchState} />
-        <RecipeList recipes={visibleRecipes} />
+      <div className="container-fluid">
+        {this.props.children}
       </div>
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.object.isRequired,
+};
 
 export default App;

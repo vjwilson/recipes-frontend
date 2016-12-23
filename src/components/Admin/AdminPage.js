@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CategoriesPage extends React.Component {
+class AdminPage extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -8,10 +8,10 @@ class CategoriesPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>Recipe Categories</h1>
+        <h1>Recipes Admin</h1>
       </div>
     );
   }
 }
 
-export default CategoriesPage;
+export default AdminPage;

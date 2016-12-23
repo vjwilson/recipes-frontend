@@ -1,0 +1,27 @@
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbar__menu {
+  display: flex;
+  list-style-type: none;
+}
+
+.navbar__menu-item {
+  display: inline-block;
+  padding: .5em 1em;
+}
+
+.navbar__block {
+  display: flex;
+  list-style-type: none;
+  margin-left: auto;
+}
+
+.navbar__text,
+.navbar__link {
+  display: inline-block;
+  padding: .5em 1em;
+}

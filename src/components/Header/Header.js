@@ -17,8 +17,8 @@ const Header = ({ login, logout, user }) => {
     <nav className="navbar">
       <div className="navbar__logo">Kirkpatrick Recipes</div>
       <ul className="navbar__menu">
-        <li className="navbar__menu-item"><a href="#">Browse</a></li>
-        <li className="navbar__menu-item"><a href="#">Categories</a></li>
+        <li className="navbar__menu-item"><IndexLink to="/" className="navbar__menu-link" activeClassName="active">Browse</IndexLink></li>
+        <li className="navbar__menu-item"><Link to="/categories" className="navbar__menu-link" activeClassName="active">Categories</Link></li>
         <li className="navbar__menu-item"><Link to="/admin" className="navbar__menu-link" activeClassName="active">Admin</Link></li>
       </ul>
       <ul className="navbar__block">

@@ -5,7 +5,7 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import Header from './Header';
 
-describe.only('Header component', function() {
+describe('Header component', function() {
   let props;
 
   beforeEach(function() {

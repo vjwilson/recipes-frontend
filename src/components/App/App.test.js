@@ -22,8 +22,9 @@ describe('App component', function() {
         </App>
       );
 
-      expect(wrapper.children()).to.have.length(3);
-      expect(wrapper.childAt(1).text()).contains('Foo');
+      expect(wrapper.children()).to.have.length(4);
+      expect(wrapper.childAt(0).text()).contains('Browse');
+      expect(wrapper.childAt(2).text()).contains('Foo');
     });
   });
 });

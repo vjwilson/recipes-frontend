@@ -39,7 +39,7 @@ class Home extends React.Component {
 
     return (
       <div className="container">
-        <h1>Kirkpatrick Recipes</h1>
+        <h1>Browse Recipes</h1>
         <SearchBox searchOptions={this.state.searchOptions} onChange={this.updateSearchState} />
         <RecipeList recipes={visibleRecipes} />
       </div>

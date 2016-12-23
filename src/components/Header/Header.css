@@ -23,6 +23,7 @@
 .navbar__menu-link:link,
 .navbar__menu-link:visited {
   color: #696969;
+  transition: background-color .3s;
 }
 
 .navbar__menu-link:hover,
@@ -50,6 +51,7 @@
 .navbar__link {
   background-color: #ffe332;
   text-decoration: none;
+  transition: background-color .3s;
 }
 
 .navbar__link:link,
@@ -59,5 +61,6 @@
 
 .navbar__link:hover,
 .navbar__link:active {
+  background-color: #e6ca19;
   color: #393939;
 }

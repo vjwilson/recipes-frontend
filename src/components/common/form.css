@@ -1,0 +1,38 @@
+.input-field {
+  font-size: 1rem;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: .25em;
+}
+
+.input-field input {
+  font-size: 1rem;
+  margin-bottom: 1em;
+  padding: .25em;
+  width: 100%;
+}
+
+.input-field button {
+  background-color: #ffe332;
+  border: 0;
+  color: #696969;
+  font-size: 1rem;
+  padding: .5em 1em;
+  transition: background-color .3s;
+  width: 100%;
+}
+
+.input-field button:disabled {
+  background-color: #f1f1f1;
+  color: #393939;
+  cursor: not-allowed;
+}
+
+.input-field button:hover:enabled,
+.input-field button:active:enabled {
+  background-color: #e6ca19;
+  color: #393939;
+  cursor: pointer;
+}

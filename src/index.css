@@ -8,12 +8,25 @@ html {
 
 body {
   font-family: sans-serif;
+  font-size: 16px;
 }
 
 .container {
   margin-left: auto;
   margin-right: auto;
   max-width: 1200px;
+}
+
+.container--centered {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+.container--centered h1 {
+  text-align: center;
 }
 
 th,

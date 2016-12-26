@@ -13,7 +13,8 @@ export class App extends React.Component {
     this.logoutAction = this.logoutAction.bind(this);
   }
 
-  loginAction() {
+  loginAction(event) {
+    event.preventDefault();
     this.setState({
       user: { username: 'jdoe'}
     });

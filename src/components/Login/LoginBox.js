@@ -3,9 +3,20 @@ import React, {PropTypes} from 'react';
 import '../common/form.css';
 import './LoginBox.css';
 
-const LoginBox = ({ email, password, updateFormField, submitLogin }) => {
+const LoginBox = ({ email, password, updateFormField, submitLogin, errors }) => {
+  let messageBox;
+  if (errors && errors.length) {
+    const errorMessage = errors.join(' ');
+    messageBox = (
+      <div className="message-box--error">
+        {errorMessage}
+      </div>
+    );
+  }
+
   return (
     <form className="login-box" onSubmit={submitLogin}>
+      {messageBox}
       <div className="input-field">
         <label htmlFor="login-box-email">Email</label>
         <input id="login-box-email" name="email" type="email" value={email} onChange={updateFormField} />
@@ -25,7 +36,8 @@ LoginBox.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   updateFormField: PropTypes.func.isRequired,
-  submitLogin: PropTypes.func.isRequired
+  submitLogin: PropTypes.func.isRequired,
+  errors: PropTypes.array
 };
 
 export default LoginBox;

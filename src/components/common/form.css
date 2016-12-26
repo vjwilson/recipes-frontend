@@ -36,3 +36,10 @@
   color: #393939;
   cursor: pointer;
 }
+
+.message-box--error {
+  background-color: #ffccd4;
+  margin-bottom: 1.5em;
+  padding: 1em;
+  width: 100%;
+}

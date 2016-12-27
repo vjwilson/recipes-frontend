@@ -25,7 +25,7 @@ describe('LoginBox component', function() {
   it('should have an appropriate class', function() {
     const shallowOutput = shallow(<LoginBox {...props} />);
 
-    expect(shallowOutput.hasClass('login-box')).to.be.true;
+    expect(shallowOutput.hasClass('form--inline')).to.be.true;
   });
 
   it('should contain a login form with the approriate elements', function() {

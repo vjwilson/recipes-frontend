@@ -15,17 +15,17 @@ const LoginBox = ({ email, password, updateFormField, submitLogin, errors }) => 
   }
 
   return (
-    <form className="login-box" onSubmit={submitLogin}>
+    <form className="form--inline" onSubmit={submitLogin}>
       {messageBox}
-      <div className="input-field">
+      <div className="input-field--inline">
         <label htmlFor="login-box-email">Email</label>
         <input id="login-box-email" name="email" type="email" value={email} onChange={updateFormField} />
       </div>
-      <div className="input-field">
+      <div className="input-field--inline">
         <label htmlFor="login-box-password">Password</label>
         <input id="login-box-password" name="password" type="password" value={password} onChange={updateFormField} />
       </div>
-      <div className="input-field">
+      <div className="input-field--inline">
         <button type="submit" disabled={!(email && password)}>Login</button>
       </div>
     </form>

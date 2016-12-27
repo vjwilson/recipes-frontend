@@ -9,13 +9,18 @@ export function authLogin(credentials) {
 
 export function authStore(profile) {
   if (profile.email && profile.token) {
+    profile.username = profile.email.substring(0, profile.email.indexOf('@'));
     localStorage.setItem('profile', JSON.stringify(profile));
+    return profile;
+  } else {
+    return {};
   }
 }
 
 export function authRetrieve() {
   try {
-    return JSON.parse(localStorage.getItem('profile'));
+    const profile = JSON.parse(localStorage.getItem('profile'));
+    return profile;
   }
   catch(e) {
     return {};

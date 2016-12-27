@@ -4,33 +4,37 @@ import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import Header from './Header';
+import LoginBox from '../Login/LoginBox';
 
 describe('Header component', function() {
   let props;
 
   beforeEach(function() {
     props = {
-      user: null,
+      profile: null,
       login: function() {},
-      logout: function() {}
+      logout: function() {},
+      updateFormField: function() {},
+      credentials: {},
+      errors: []
     };
   });
 
   it('should render the static component', function() {
 
-    const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+    const shallowOutput = shallow(<Header {...props} />);
 
     expect(shallowOutput).to.have.length(1);
   });
 
   it('should render an element of the correct type', function() {
-    const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+    const shallowOutput = shallow(<Header {...props} />);
 
     expect(shallowOutput.type()).to.equal('nav');
   });
 
   it('should render an element with correct classes', function() {
-    const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+    const shallowOutput = shallow(<Header {...props} />);
 
     expect(shallowOutput.hasClass('navbar')).to.be.true;
   });
@@ -38,69 +42,60 @@ describe('Header component', function() {
   it('should have two items in its nav menu', function() {
     const mountedOutput = mount(<Header {...props} />);
 
-    const ticketLink = mountedOutput.find('.navbar__menu-item');
+    const menuItems = mountedOutput.find('.navbar__menu-item');
 
-    expect(ticketLink.length).to.equal(3);
+    expect(menuItems.length).to.equal(3);
   });
 
   it('should have a link to admin in the last menu item', function() {
     const mountedOutput = mount(<Header {...props} />);
 
-    const ticketLink = mountedOutput.find('.navbar__menu-item').last().find(Link);
+    const menuLink = mountedOutput.find('.navbar__menu-item').last().find(Link);
 
-    expect(ticketLink.text()).to.equal('Admin');
+    expect(menuLink.text()).to.equal('Admin');
   });
 
-  it('should contain a login block', function() {
-    const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+  it('should contain an auth block', function() {
+    const shallowOutput = shallow(<Header {...props} />);
 
-    const loginBlock = shallowOutput.find('.navbar__block');
+    const authBlock = shallowOutput.find('.navbar__block');
 
-    expect(loginBlock).to.be.an('object');
+    expect(authBlock).to.be.an('object');
   });
 
   describe('when there is NOT an authenticated user', function() {
-    it('should contain a login prompt', function() {
-      const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+    it('should contain a login form', function() {
+      const shallowOutput = shallow(<Header {...props} />);
 
-      const authMessage = shallowOutput.find('.navbar__block .navbar__text');
-
-      expect(authMessage.text()).to.contain('Have an account?');
-    });
-
-    it('should contain a login link if no authenticated user', function() {
-      // props.user is `null` by default
-      const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
-
-      const authLink = shallowOutput.find('.navbar__block .navbar__link');
-
-      expect(authLink.type()).to.equal('a');
-      expect(authLink.text()).to.contain('Login');
+      const authBlock = shallowOutput.find('.navbar__block');
+      const firstChild = authBlock.childAt(0);
+      expect(firstChild.type()).to.equal(LoginBox);
     });
   });
 
   describe('when there is an authenticated user', function() {
     beforeEach(function() {
-      props.user = {
-        id: 3,
-        username: 'gmtester'
+      props.profile = {
+        username: 'ljenkins',
+        email: 'ljenkins@aol.com',
+        token: '8675309abc'
       };
     });
 
     it('should contain the username instead of a login prompt', function() {
-      const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+      const shallowOutput = shallow(<Header {...props} />);
 
-      const authMessage = shallowOutput.find('.navbar__block .navbar__text');
+      const authBlock = shallowOutput.find('.navbar__block');
 
-      expect(authMessage.text()).to.contain(props.user.username);
+      expect(authBlock.text()).to.contain(props.profile.username);
     });
 
     it('should contain a logout link', function() {
-      const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+      const shallowOutput = shallow(<Header {...props} />);
 
       const authLink = shallowOutput.find('.navbar__block .navbar__link');
 
-      expect(authLink.type()).to.equal('a');
+      expect(authLink.type()).to.equal('button');
       expect(authLink.text()).to.contain('Logout');
     });
   });
@@ -118,23 +113,23 @@ describe('Header component', function() {
     });
 
     it('should call login function if no authenticated use', function() {
-      const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+      const wrapper = mount(<Header {...props} />);
 
-      const authLink = shallowOutput.find('.navbar__block .navbar__link');
+      const authButton = wrapper.find('.form--inline');
 
-      authLink.simulate('click');
+      authButton.simulate('submit');
 
       expect(loginAction.calledOnce).to.be.true;
     });
 
     it('should call logout function when there is an authenticated user', function() {
-      props.user = {
+      props.profile = {
         id: 3,
         username: 'gmtester'
       };
-      const shallowOutput = shallow(<Header user={props.user} login={props.login} logout={props.logout} />);
+      const wrapper = mount(<Header {...props} />);
 
-      const authLink = shallowOutput.find('.navbar__block .navbar__link');
+      const authLink = wrapper.find('.navbar__block .navbar__link');
 
       authLink.simulate('click');
 

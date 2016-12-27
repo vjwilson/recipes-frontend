@@ -1,18 +1,10 @@
 import React, {PropTypes} from 'react';
 import { Link, IndexLink } from 'react-router';
+import LoginBox from '../Login/LoginBox';
 
 import './Header.css';
 
-const Header = ({ login, logout, user }) => {
-  let authLink = login;
-  let authLinkText = 'Login';
-  let authMessage = 'Have an account?';
-  if (user && user.username) {
-    authLink = logout;
-    authLinkText = 'Logout';
-    authMessage = 'Welcome, ' + user.username;
-  }
-
+const Header = ({ profile, login, logout, updateFormField, credentials, loginErrors }) => {
   return (
     <nav className="navbar">
       <div className="navbar__logo">Kirkpatrick Recipes</div>
@@ -21,10 +13,18 @@ const Header = ({ login, logout, user }) => {
         <li className="navbar__menu-item"><Link to="/categories" className="navbar__menu-link" activeClassName="active">Categories</Link></li>
         <li className="navbar__menu-item"><Link to="/admin" className="navbar__menu-link" activeClassName="active">Admin</Link></li>
       </ul>
-      <ul className="navbar__block">
-        <li className="navbar__text">{authMessage}</li>
-        <li><a href="#" className="navbar__link" onClick={authLink}>{authLinkText}</a></li>
-      </ul>
+      <div className="navbar__block">
+        {
+          (profile && profile.username)
+          ?
+          (<ul>
+            <li className="navbar__text">{profile.username}</li>
+            <li className="navbar__text"><button className="navbar__link" onClick={logout}>Logout</button></li>
+          </ul>)
+          :
+          (<LoginBox email={credentials.email} password={credentials.password} updateFormField={updateFormField} submitLogin={login} errors={loginErrors} />)
+        }
+      </div>
     </nav>
   );
 };
@@ -32,7 +32,10 @@ const Header = ({ login, logout, user }) => {
 Header.propTypes = {
   login: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
-  user: PropTypes.object
+  updateFormField: PropTypes.func.isRequired,
+  profile: PropTypes.object,
+  credentials: PropTypes.object,
+  loginErrors: PropTypes.array
 };
 
 export default Header;

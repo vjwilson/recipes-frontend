@@ -1,4 +1,5 @@
-.input-field {
+.input-field,
+.input-field--inline {
   font-size: 1rem;
 }
 
@@ -14,24 +15,35 @@
   width: 100%;
 }
 
-.input-field button {
+.input-field button,
+.input-field--inline button {
   background-color: #ffe332;
   border: 0;
   color: #696969;
   font-size: 1rem;
-  padding: .5em 1em;
+  padding-bottom: .5em;
+  padding-left: .375em;
+  padding-top: .5em;
+  margin: 0 1em;
   transition: background-color .3s;
+}
+
+.input-field button {
+  padding-right: .375em;
   width: 100%;
 }
 
-.input-field button:disabled {
+.input-field button:disabled,
+.input-field--inline button:disabled {
   background-color: #f1f1f1;
   color: #393939;
   cursor: not-allowed;
 }
 
 .input-field button:hover:enabled,
-.input-field button:active:enabled {
+.input-field--inline button:hover:enabled,
+.input-field button:active:enabled,
+.input-field--inline button:active:enabled {
   background-color: #e6ca19;
   color: #393939;
   cursor: pointer;
@@ -42,4 +54,22 @@
   margin-bottom: 1.5em;
   padding: 1em;
   width: 100%;
+}
+
+
+/* inline forms */
+.form--inline {
+  align-items: center;
+  display: flex;
+}
+
+.input-field--inline label {
+  display: inline-block;
+  margin-left: 1em;
+  margin-right: .5em;
+}
+
+.input-field--inline input {
+  font-size: 1rem;
+  padding: .25em;
 }

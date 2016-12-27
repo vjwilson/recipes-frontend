@@ -1,7 +1,8 @@
 import React from 'react';
+import {browserHistory} from 'react-router';
 import LoginBox from './LoginBox';
 
-import {authLogin} from '../../api/authApi';
+import { authLogin, authStore } from '../../api/authApi';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -34,7 +35,11 @@ class LoginPage extends React.Component {
         if (result.errors && result.errors.length) {
           this.showErrors(result.errors);
         } else {
-          console.log(result);
+          authStore({
+            email: this.state.credentials.email,
+            token: result.token
+          });
+          browserHistory.push('/admin');
         }
       })
       .catch((errors) => {

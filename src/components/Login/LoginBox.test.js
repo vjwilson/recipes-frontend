@@ -11,30 +11,24 @@ describe('LoginBox component', function() {
       email: '',
       password: '',
       errors: '',
-      changeFormField: function() {},
+      updateFormField: function() {},
       submitLogin: function() {}
     };
   });
 
   it('should render the static component', function() {
-    props = {};
-
     const shallowOutput = shallow(<LoginBox {...props} />);
 
     expect(shallowOutput).to.have.length(1);
   });
 
   it('should have an appropriate class', function() {
-    props = {};
-
     const shallowOutput = shallow(<LoginBox {...props} />);
 
     expect(shallowOutput.hasClass('login-box')).to.be.true;
   });
 
   it('should contain a login form with the approriate elements', function() {
-    props = {};
-
     const mountOutput = mount(<LoginBox {...props} />);
 
     const emailField = mountOutput.find('input[type="email"]');

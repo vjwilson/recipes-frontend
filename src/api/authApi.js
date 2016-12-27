@@ -7,6 +7,25 @@ export function authLogin(credentials) {
   return login('auth/signin', credentials);
 }
 
+export function authStore(profile) {
+  if (profile.email && profile.token) {
+    localStorage.setItem('profile', JSON.stringify(profile));
+  }
+}
+
+export function authRetrieve() {
+  try {
+    return JSON.parse(localStorage.getItem('profile'));
+  }
+  catch(e) {
+    return {};
+  }
+}
+
+export function authLogout() {
+  localStorage.setItem('profile', '');
+}
+
 function login(url, credentials) {
   return fetch(baseUrl + url, {
     method: 'post',

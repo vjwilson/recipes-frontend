@@ -11,7 +11,7 @@ const Header = ({ profile, login, logout, updateFormField, credentials, loginErr
       <ul className="navbar__menu">
         <li className="navbar__menu-item"><IndexLink to="/" className="navbar__menu-link" activeClassName="active">Browse</IndexLink></li>
         <li className="navbar__menu-item"><Link to="/categories" className="navbar__menu-link" activeClassName="active">Categories</Link></li>
-        <li className="navbar__menu-item"><Link to="/admin" className="navbar__menu-link" activeClassName="active">Admin</Link></li>
+        { (profile && profile.token) && <li className="navbar__menu-item"><Link to="/admin" className="navbar__menu-link" activeClassName="active">Admin</Link></li>}
       </ul>
       <div className="navbar__block">
         {

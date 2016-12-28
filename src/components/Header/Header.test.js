@@ -39,22 +39,6 @@ describe('Header component', function() {
     expect(shallowOutput.hasClass('navbar')).to.be.true;
   });
 
-  it('should have two items in its nav menu', function() {
-    const mountedOutput = mount(<Header {...props} />);
-
-    const menuItems = mountedOutput.find('.navbar__menu-item');
-
-    expect(menuItems.length).to.equal(3);
-  });
-
-  it('should have a link to admin in the last menu item', function() {
-    const mountedOutput = mount(<Header {...props} />);
-
-    const menuLink = mountedOutput.find('.navbar__menu-item').last().find(Link);
-
-    expect(menuLink.text()).to.equal('Admin');
-  });
-
   it('should contain an auth block', function() {
     const shallowOutput = shallow(<Header {...props} />);
 
@@ -70,6 +54,22 @@ describe('Header component', function() {
       const authBlock = shallowOutput.find('.navbar__block');
       const firstChild = authBlock.childAt(0);
       expect(firstChild.type()).to.equal(LoginBox);
+    });
+
+    it('should have two items in its nav menu', function() {
+      const mountedOutput = mount(<Header {...props} />);
+
+      const menuItems = mountedOutput.find('.navbar__menu-item');
+
+      expect(menuItems.length).to.equal(2);
+    });
+
+    it('should have a link to categories in the last menu item', function() {
+      const mountedOutput = mount(<Header {...props} />);
+
+      const menuLink = mountedOutput.find('.navbar__menu-item').last().find(Link);
+
+      expect(menuLink.text()).to.equal('Categories');
     });
   });
 
@@ -97,6 +97,22 @@ describe('Header component', function() {
 
       expect(authLink.type()).to.equal('button');
       expect(authLink.text()).to.contain('Logout');
+    });
+
+    it('should have three items in its nav menu', function() {
+      const mountedOutput = mount(<Header {...props} />);
+
+      const menuItems = mountedOutput.find('.navbar__menu-item');
+
+      expect(menuItems.length).to.equal(3);
+    });
+
+    it('should have a link to admin in the last menu item', function() {
+      const mountedOutput = mount(<Header {...props} />);
+
+      const menuLink = mountedOutput.find('.navbar__menu-item').last().find(Link);
+
+      expect(menuLink.text()).to.equal('Admin');
     });
   });
 

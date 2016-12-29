@@ -5,6 +5,16 @@ import LoginBox from '../Login/LoginBox';
 import './Header.css';
 
 const Header = ({ profile, login, logout, updateFormField, credentials, loginErrors }) => {
+  let authBlock;
+  if (profile && profile.username) {
+    authBlock = (<ul>
+                  <li className="navbar__text">{profile.username}</li>
+                  <li className="navbar__text"><button className="navbar__link" onClick={logout}>Logout</button></li>
+                </ul>);
+  } else {
+    authBlock = (<LoginBox email={credentials.email} password={credentials.password} updateFormField={updateFormField} submitLogin={login} errors={loginErrors} />);
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar__logo">Kirkpatrick Recipes</div>
@@ -14,16 +24,7 @@ const Header = ({ profile, login, logout, updateFormField, credentials, loginErr
         { (profile && profile.token) && <li className="navbar__menu-item"><Link to="/admin" className="navbar__menu-link" activeClassName="active">Admin</Link></li>}
       </ul>
       <div className="navbar__block">
-        {
-          (profile && profile.username)
-          ?
-          (<ul>
-            <li className="navbar__text">{profile.username}</li>
-            <li className="navbar__text"><button className="navbar__link" onClick={logout}>Logout</button></li>
-          </ul>)
-          :
-          (<LoginBox email={credentials.email} password={credentials.password} updateFormField={updateFormField} submitLogin={login} errors={loginErrors} />)
-        }
+        {authBlock}
       </div>
     </nav>
   );

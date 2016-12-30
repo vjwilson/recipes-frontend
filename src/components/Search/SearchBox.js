@@ -10,14 +10,16 @@ class SearchBox extends React.Component {
       <form>
         <fieldset>
           <legend>Find recipes by name or ingredients</legend>
-          <label htmlFor="searchString">Search</label>
-          <input
-            type="text"
-            name="searchString"
-            id="searchString"
-            value={this.props.searchOptions.searchString}
-            onChange={this.props.onChange}
+          <div className="input-field--inline">
+            <label htmlFor="searchString">Search</label>
+            <input
+              type="text"
+              name="searchString"
+              id="searchString"
+              value={this.props.searchOptions.searchString}
+              onChange={this.props.onChange}
           />
+          </div>
         </fieldset>
       </form>
     );

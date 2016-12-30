@@ -10,7 +10,7 @@ describe('LoginBox component', function() {
     props = {
       email: '',
       password: '',
-      errors: '',
+      errors: [],
       updateFormField: function() {},
       submitLogin: function() {}
     };

@@ -7,10 +7,10 @@ import './Header.css';
 const Header = ({ profile, login, logout, updateFormField, credentials, loginErrors }) => {
   let authBlock;
   if (profile && profile.username) {
-    authBlock = (<ul>
-                  <li className="navbar__text">{profile.username}</li>
-                  <li className="navbar__text"><button className="navbar__link" onClick={logout}>Logout</button></li>
-                </ul>);
+    authBlock = (<div>
+                  <span className="navbar__text">{profile.username}</span>
+                  <span className="input-field--inline"><button onClick={logout}>Logout</button></span>
+                 </div>);
   } else {
     authBlock = (<LoginBox email={credentials.email} password={credentials.password} updateFormField={updateFormField} submitLogin={login} errors={loginErrors} />);
   }

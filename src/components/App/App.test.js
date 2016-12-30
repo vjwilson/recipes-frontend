@@ -8,7 +8,7 @@ describe('App component', function() {
   describe('initial render', function() {
 
     it('should render the component', function() {
-      const shallowOutput = shallow(<App />);
+      const shallowOutput = shallow(<App><div /></App>);
 
       expect(shallowOutput).to.have.length(1);
     });

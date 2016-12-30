@@ -15,7 +15,10 @@ describe('Header component', function() {
       login: function() {},
       logout: function() {},
       updateFormField: function() {},
-      credentials: {},
+      credentials: {
+        email: '',
+        password: ''
+      },
       errors: []
     };
   });
@@ -93,7 +96,7 @@ describe('Header component', function() {
     it('should contain a logout link', function() {
       const shallowOutput = shallow(<Header {...props} />);
 
-      const authLink = shallowOutput.find('.navbar__block .navbar__link');
+      const authLink = shallowOutput.find('.navbar__block button');
 
       expect(authLink.type()).to.equal('button');
       expect(authLink.text()).to.contain('Logout');
@@ -145,7 +148,7 @@ describe('Header component', function() {
       };
       const wrapper = mount(<Header {...props} />);
 
-      const authLink = wrapper.find('.navbar__block .navbar__link');
+      const authLink = wrapper.find('.navbar__block button');
 
       authLink.simulate('click');
 

@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import RecipesTable from '../Recipe/RecipesTable';
 
 import {getRecipes} from '../../api/recipeApi';

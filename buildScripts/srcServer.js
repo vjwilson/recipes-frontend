@@ -16,16 +16,18 @@ app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
 }));
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../src/index.html'));
-});
-
-app.get('/users', function(req, res) {
-  res.json([
-    {"id": 1, "firstName": "Bob", "lastName": "Marley", "email": "bob@gmail.com"},
-    {"id": 2, "firstName": "Tammy", "lastName": "Wynette", "email": "tammy@yahoo.com"},
-    {"id": 3, "firstName": "Tina", "lastName": "Turner", "email": "tina@hotmail.com"}
-  ]);
+// special handler required to hot-wire html injection for nested routes
+// see: https://github.com/ampedandwired/html-webpack-plugin/issues/145
+app.get('*', function(req, res, next) {
+  const filename = path.join(compiler.outputPath,'index.html');
+  compiler.outputFileSystem.readFile(filename, function(err, result){
+    if (err) {
+      return next(err);
+    }
+    res.set('content-type','text/html');
+    res.send(result);
+    res.end();
+  });
 });
 
 app.listen(port, function(err) {

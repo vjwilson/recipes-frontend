@@ -7,6 +7,10 @@ export function getRecipes() {
   return get('recipes');
 }
 
+export function getOneRecipe(id) {
+  return get(`recipes/${id}`);
+}
+
 export function deleteRecipe(id) {
   return del(`recipes/${id}`);
 }

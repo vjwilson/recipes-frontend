@@ -4,6 +4,7 @@ import App from './components/App/App';  //eslint-disable-line import/no-named-a
 import HomePage from './components/Home/HomePage';
 import CategoriesPage from './components/Categories/CategoriesPage';
 import AdminPage from './components/Admin/AdminPage';
+import RecipeEditPage from './components/RecipeEdit/RecipeEditPage';
 
 import { authRetrieve } from './api/authApi';
 
@@ -20,5 +21,6 @@ export default (
     <IndexRoute component={HomePage} />
     <Route path="categories" component={CategoriesPage} />
     <Route path="admin" component={AdminPage} onEnter={checkLogin} />
+    <Route path="recipe/:id/edit" component={RecipeEditPage} />
   </Route>
 );

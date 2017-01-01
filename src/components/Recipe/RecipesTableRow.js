@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-// import {Link} from 'react-router';
+import {Link} from 'react-router';
 import { firstIngredients, firstWords } from '../../selectors/selectors';
 
 const RecipesTableRow = ({ recipe, onDelete }) => {
@@ -10,7 +10,7 @@ const RecipesTableRow = ({ recipe, onDelete }) => {
 
   return (
     <tr>
-      <td>{recipe.name}</td>
+      <td><Link to={`/recipe/${recipe.id}/edit`}>{recipe.name}</Link></td>
       <td>{recipe.author}</td>
       <td>{firstIngredients(recipe.ingredients)}</td>
       <td>{firstWords(recipe.directions)}</td>

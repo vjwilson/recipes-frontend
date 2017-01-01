@@ -34,6 +34,17 @@ td {
   padding: 9px;
 }
 
+a:link,
+a:visited {
+  color: #0f2279;
+  transition: color .3s;
+}
+
+a:hover,
+a:active {
+  color: #7888de;
+}
+
 .deleteRecipe {
   background-color: red;
   border-radius: 3px;

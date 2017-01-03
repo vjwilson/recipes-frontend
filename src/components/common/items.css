@@ -1,0 +1,34 @@
+.item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-list__item {
+  color: #333;
+}
+
+.editable-items {
+  border: 1px solid #333;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: .25em 0 .5em;
+  padding: .5em;
+}
+
+.editable-list__item {
+  background-color: #e1e1d9;
+  margin-bottom: .5em;
+  margin-left: 0;
+  margin-right: .75em;
+  margin-top: .5em;
+  padding: .5em 2.5em .5em .5em;
+  position: relative;
+}
+
+.editable-list__remove-button {
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  right: 0;
+}

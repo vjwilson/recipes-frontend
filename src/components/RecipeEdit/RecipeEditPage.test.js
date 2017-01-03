@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
 import RecipeEditPage from './RecipeEditPage';
+import RecipeForm from './RecipeForm';
 
 describe('RecipeEditPage component', function() {
   let props;
@@ -37,10 +38,17 @@ describe('RecipeEditPage component', function() {
       expect(shallowOutput).to.have.length(1);
     });
 
-    it('should a title that contains the name', function() {
+    it('should contain a title with an appropriate name', function() {
       const wrapper = mount(<RecipeEditPage {...props} />);
 
       expect(wrapper.find('h1').text()).to.contain('Edit Recipe');
+    });
+
+    it('should a contain a RecipeForm component', function() {
+      const wrapper = mount(<RecipeEditPage {...props} />);
+      const secondChild = wrapper.childAt(1);
+
+      expect(secondChild.type()).to.equal(RecipeForm);
     });
   });
 });

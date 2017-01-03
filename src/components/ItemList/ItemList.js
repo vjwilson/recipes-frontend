@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-import './itemList.css';
+import '../common/items.css';
 
 class ItemList extends React.Component {
   constructor(props) {

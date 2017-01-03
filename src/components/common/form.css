@@ -8,11 +8,16 @@
   margin-bottom: .25em;
 }
 
-.input-field input {
+.input-field input,
+.input-field textarea {
   font-size: 1rem;
   margin-bottom: 1em;
   padding: .25em;
   width: 100%;
+}
+
+.input-field textarea {
+  min-height: 6em;
 }
 
 .input-field button,
@@ -22,15 +27,17 @@
   color: #696969;
   font-size: 1rem;
   padding-bottom: .5em;
-  padding-left: .375em;
   padding-top: .5em;
-  margin: 0 1em;
   transition: background-color .3s;
 }
 
 .input-field button {
   padding-right: .375em;
   width: 100%;
+}
+.input-field--inline button {
+  margin: 0 1em;
+  padding-left: .375em;
 }
 
 .input-field button:disabled,

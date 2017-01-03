@@ -1,8 +1,0 @@
-.item-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.item-list__item {
-  color: #333;
-}

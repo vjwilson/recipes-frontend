@@ -11,11 +11,27 @@ export function getOneRecipe(id) {
   return get(`recipes/${id}`);
 }
 
+export function saveRecipe(recipe) {
+  if (recipe.id) {
+    return put(`recipes/${id}`, recipe);
+  } else {
+    return post(`recipes`, recipe);
+  }
+}
+
 export function deleteRecipe(id) {
   return del(`recipes/${id}`);
 }
 
 function get(url) {
+  return fetch(baseUrl + url).then(onSuccess, onError);
+}
+
+function put(url, recipe) {
+  return fetch(baseUrl + url).then(onSuccess, onError);
+}
+
+function post(url, recipe) {
   return fetch(baseUrl + url).then(onSuccess, onError);
 }
 

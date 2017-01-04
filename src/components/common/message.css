@@ -1,0 +1,6 @@
+.alert--error {
+  background-color: #ffe0e0;
+  color: #ff0000;
+  margin-bottom: 1em;
+  padding: .5em 1em;
+}

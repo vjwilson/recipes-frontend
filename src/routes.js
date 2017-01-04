@@ -21,6 +21,7 @@ export default (
     <IndexRoute component={HomePage} />
     <Route path="categories" component={CategoriesPage} />
     <Route path="admin" component={AdminPage} onEnter={checkLogin} />
+    <Route path="recipe/new" component={RecipeEditPage} />
     <Route path="recipe/:id/edit" component={RecipeEditPage} />
   </Route>
 );

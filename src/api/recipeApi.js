@@ -1,6 +1,8 @@
 import 'whatwg-fetch';
 import getBaseUrl from './baseUrl';
 
+import { authRetrieve } from './authApi';
+
 const baseUrl = getBaseUrl();
 
 export function getRecipes() {
@@ -13,7 +15,7 @@ export function getOneRecipe(id) {
 
 export function saveRecipe(recipe) {
   if (recipe.id) {
-    return put(`recipes/${id}`, recipe);
+    return put(`recipes/${recipe.id}`, recipe);
   } else {
     return post(`recipes`, recipe);
   }
@@ -28,11 +30,29 @@ function get(url) {
 }
 
 function put(url, recipe) {
-  return fetch(baseUrl + url).then(onSuccess, onError);
+  const profile = authRetrieve();
+
+  return fetch(baseUrl + url, {
+    method: 'put',
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "Authorization": profile.token
+    },
+    body: JSON.stringify(recipe)
+  }).then(onSuccess, onError);
 }
 
 function post(url, recipe) {
-  return fetch(baseUrl + url).then(onSuccess, onError);
+  const profile = authRetrieve();
+
+  return fetch(baseUrl + url, {
+    method: 'post',
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "Authorization": profile.token
+    },
+    body: JSON.stringify(recipe)
+  }).then(onSuccess, onError);
 }
 
 function del(url) {

@@ -28,11 +28,13 @@ class RecipeEditPage extends React.Component {
   }
 
   componentDidMount() {
-    getOneRecipe(this.state.recipeId)
-      .then((result) => {
-        const newRecipe = Object.assign({}, result);
-        this.setState({recipe: newRecipe});
-    });
+    if (this.state.recipeId) {
+      getOneRecipe(this.state.recipeId)
+        .then((result) => {
+          const newRecipe = Object.assign({}, result);
+          this.setState({recipe: newRecipe});
+      });
+    }
   }
 
   updateRecipeState(event) {
@@ -61,24 +63,47 @@ class RecipeEditPage extends React.Component {
     this.setState({ recipe: newRecipe });
   }
 
+  recipeFormIsValid() {
+    let formIsValid = true;
+    let errors = {};
+
+    if (this.state.recipe.name.length < 3) {
+      errors.name = 'Name must be at least 3 characters.';
+      formIsValid = false;
+    }
+
+    if (this.state.recipe.author.length < 2) {
+      errors.author = 'Name must be at least 2 characters.';
+      formIsValid = false;
+    }
+
+    if (this.state.recipe.directions.length < 12) {
+      errors.directions = 'Directions must be at least 12 characters.';
+      formIsValid = false;
+    }
+
+    this.setState({errors: errors});
+    return formIsValid;
+  }
+
   saveRecipe(event) {
     event.preventDefault();
 
-    // if (!this.courseFormIsValid()) {
-    //   return;
-    // }
+    if (!this.recipeFormIsValid()) {
+      return;
+    }
 
     this.setState({ saving: true });
-    saveRecipe(this.state.course)
+    saveRecipe(this.state.recipe)
       .then(() => this.redirect())
-      .catch(() => {
-        // toastr.error(`${error} Recipe could not be saved. Try again.`, 'Error!');
+      .catch((error) => {
+        alert(`${error} Recipe could not be saved. Try again.`);
         this.setState({ saving: false });
       });
   }
 
   redirect() {
-    // toastr.success('Course saved successfully.', 'Success!');
+    alert('Course saved successfully.', 'Success!');
     this.setState({ saving: false });
     browserHistory.push('/admin');
   }

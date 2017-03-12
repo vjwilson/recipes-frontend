@@ -29,6 +29,12 @@ body {
   text-align: center;
 }
 
+.admin-table {
+  border-top: 1px solid #f0f0f0;
+  margin: 1em 0;
+  padding: 1em 0;
+}
+
 th,
 td {
   padding: 9px;
@@ -55,3 +61,11 @@ a.deleteRecipe:link,
 a.deleteRecipe:visited {
   color: white;
 }
+
+.primary-link {
+  background-color: #ffe332;
+  color: #393939;
+  padding: .5em 1em;
+  text-decoration: none;
+}
+

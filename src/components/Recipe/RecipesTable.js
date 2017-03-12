@@ -6,7 +6,7 @@ const RecipesTable = ({ recipes, onDelete }) => {
   const sortedRecipes = sortRecipes(recipes);
 
   return (
-    <table className="table">
+    <table className="admin-table">
       <thead>
         <tr>
           <th>Title</th>

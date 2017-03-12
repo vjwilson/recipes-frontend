@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import RecipesTable from '../Recipe/RecipesTable';
 
 import {getRecipes} from '../../api/recipeApi';
@@ -39,6 +41,9 @@ class AdminPage extends React.Component {
     return (
       <div className="container">
         <h1>Recipes Admin</h1>
+        <div>
+          <Link to="/recipe/new" className="primary-link">Add New Recipe</Link>
+        </div>
         <RecipesTable recipes={this.state.recipes} onDelete={this.onClickDelete} />
       </div>
     );

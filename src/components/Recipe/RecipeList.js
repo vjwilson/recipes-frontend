@@ -7,13 +7,14 @@ class RecipeList extends React.Component {
   }
 
   render() {
-    const recipeList = this.props.recipes
+    const recipeList = this.props.recipes.length ? this.props.recipes
       .sort((recipe1, recipe2) => {
         return (recipe1.name > recipe2.name) ? 1 : -1;
       })
       .map((recipe) => {
         return <Recipe key={recipe.id} recipe={recipe} />;
-    });
+      }) :
+      <p>Waiting to load recipes...</p>;
 
     return (
       <ul className="card-container">

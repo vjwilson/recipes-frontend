@@ -5,7 +5,7 @@ import { firstIngredients, firstWords } from '../../selectors/selectors';
 const RecipesTableRow = ({ recipe, onDelete }) => {
   function deleteClick(event) {
     event.preventDefault();
-    onDelete(recipe.id);
+    onDelete(recipe);
   }
 
   return (

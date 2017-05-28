@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import RecipesTable from '../Recipe/RecipesTable';
 
-import {getRecipes} from '../../api/recipeApi';
+import { getRecipes, deleteRecipe } from '../../api/recipeApi';
 
 class AdminPage extends React.Component {
   constructor(props) {
@@ -19,14 +19,18 @@ class AdminPage extends React.Component {
     this.onClickDelete = this.onClickDelete.bind(this);
   }
 
-  onClickDelete() {
-    // recipeApi.deleteRecipe(recipeId)
-    //   .then(() => {
-    //     alert('Recipe deleted successfully.', 'Success!');
-    //   })
-    //   .catch((error) => {
-    //     alert(`${error} Recipe could not be deleted. Try again.`, 'Error!');
-    //   });
+  onClickDelete(recipe) {
+    if (confirm(`Are you sure you want to delete the recipe "${recipe.name}"`)) {
+      deleteRecipe(recipe.id)
+        .then(() => {
+          alert('Recipe deleted successfully.', 'Success!');
+          const results = this.recipes.filter(item => item.id !== recipe.id);
+          this.setState({ recipes: results });
+        })
+        .catch((error) => {
+          alert(`${error} Recipe could not be deleted. Try again.`, 'Error!');
+        });
+    }
   }
 
   componentDidMount() {

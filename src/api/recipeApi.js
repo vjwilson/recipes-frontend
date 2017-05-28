@@ -56,15 +56,23 @@ function post(url, recipe) {
 }
 
 function del(url) {
-  const request = new Request(baseUrl + url, {
-    method: 'DELETE'
-  });
+  const profile = authRetrieve();
 
-  return fetch(request).then(onSuccess, onError);
+  return fetch(baseUrl + url, {
+    method: 'delete',
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "Authorization": profile.token
+    },
+  }).then(onSuccess, onError);
 }
 
 function onSuccess(response) {
-  return response.json();
+  if (response.status !== 204) {
+    return response.json();
+  } else {
+    return 'Success';
+  }
 }
 
 function onError(error) {

@@ -1,7 +1,5 @@
 import React, {PropTypes} from 'react';
 import { browserHistory } from 'react-router';
-import {Catalog} from 'catalog';
-import Recipe from '../Recipe/Recipe';
 
 import Header from '../Header/Header';
 
@@ -67,18 +65,6 @@ export class App extends React.Component {
       <div className="container">
         <Header profile={this.state.profile} credentials={this.state.credentials} login={this.loginAction} logout={this.logoutAction} updateFormField={this.updateFormField} />
         {this.props.children}
-        <Catalog
-          title='My Styleguide'
-          basePath='/catalog'
-          pages={[
-            {
-              title: 'Components',
-              pages: [
-                {path: 'recipe', title: 'Recipe', component: Recipe}
-              ]
-            }
-          ]}
-        />
       </div>
     );
   }

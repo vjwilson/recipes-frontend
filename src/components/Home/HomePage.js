@@ -1,11 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as recipeFilterActions from '../../actions/recipeFilterActions';
+
 import SearchBox from '../Search/SearchBox';
 import RecipeList from '../Recipe/RecipeList';
 import { searchRecipes } from '../Search/searchService';
 
 import {getRecipes} from '../../api/recipeApi';
 
-class Home extends React.Component {
+export class Home extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,6 +20,7 @@ class Home extends React.Component {
       }
     };
 
+    console.log(props);
     this.updateSearchState = this.updateSearchState.bind(this);
   }
 
@@ -47,4 +52,16 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    recipeFilter: state.recipeFilter
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(recipeFilterActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

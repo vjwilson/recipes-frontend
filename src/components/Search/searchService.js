@@ -1,5 +1,5 @@
 export function searchRecipes(recipes, searchOptions) {
-  const currentSearchString = searchOptions.searchString.toLowerCase();
+  const currentSearchString = searchOptions.wildcard.toLowerCase();
 
   return recipes.filter(recipe => {
     if (recipe.name.toLowerCase().includes(currentSearchString)) {

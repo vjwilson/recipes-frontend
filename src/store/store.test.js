@@ -8,7 +8,8 @@ import * as recipeFilterActions from '../actions/recipeFilterActions';
 describe('Store', function() {
   it('should handle setting the recipe filter', function() {
     // arrange
-    const store = createStore(rootReducer, initialState);
+    const presetState = JSON.parse(JSON.stringify(initialState));
+    const store = createStore(rootReducer, presetState);
     const newFilter = {
       name: 'Stew',
       author: 'Smith'
@@ -32,7 +33,8 @@ describe('Store', function() {
 
   it('should handle clearing the recipe filter', function() {
     // arrange
-    const presetState = Object.assign({}, initialState, { author: 'Gordon' });
+    const presetState = JSON.parse(JSON.stringify(initialState));
+    presetState.recipeFilter.author = 'Gordon';
     const store = createStore(rootReducer, presetState);
 
     // act

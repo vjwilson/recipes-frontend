@@ -34,7 +34,7 @@ describe('searchRecipes', function() {
   ];
 
   let searchOptions = {
-    searchString: ''
+    wildcard: ''
   };
 
   it('should return an empty array when passed an empty array', function() {
@@ -50,7 +50,7 @@ describe('searchRecipes', function() {
   });
 
   it('should return elements of an array whose names contain the search string', function() {
-    searchOptions.searchString = 'ch';
+    searchOptions.wildcard = 'ch';
     const filteredRecipes = searchRecipes(allRecipes, searchOptions);
 
     expect(filteredRecipes).to.have.lengthOf(2);
@@ -59,7 +59,7 @@ describe('searchRecipes', function() {
   });
 
   it('should return elements of an array whose ingredients contain the search string', function() {
-    searchOptions.searchString = 'suga';
+    searchOptions.wildcard = 'suga';
     const filteredRecipes = searchRecipes(allRecipes, searchOptions);
 
     expect(filteredRecipes).to.have.lengthOf(3);

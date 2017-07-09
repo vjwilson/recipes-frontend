@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
-import { Home } from './HomePage';
+import { HomePage } from './HomePage';
 import fetchMock from 'fetch-mock';
 
 describe('HomePage component', function() {
@@ -51,13 +51,13 @@ describe('HomePage component', function() {
       // does it "render without exploding"?
       // see: https://gist.github.com/thevangelist/e2002bc6b9834def92d46e4d92f15874
 
-      const wrapper = mount(<Home />);
+      const wrapper = mount(<HomePage recipeFilter={{ wildcard: '' }} />);
 
       expect(wrapper).to.have.length(1);
     });
 
     it('should start with an empty state', function() {
-      const wrapper = mount(<Home />);
+      const wrapper = mount(<HomePage recipeFilter={{ wildcard: '' }} />);
 
       expect(wrapper.state().recipes).to.be.instanceof(Array);
       expect(wrapper.state().recipes).to.have.lengthOf(0);

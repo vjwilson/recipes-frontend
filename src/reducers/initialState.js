@@ -5,5 +5,11 @@ export default {
     ingredients: '',
     directions: '',
     wildcard: ''
+  },
+  recipes: {
+    data: [],
+    isFetching: false,
+    lastUpdated: null,
+    error: null
   }
 };

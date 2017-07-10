@@ -4,6 +4,22 @@ export function sortRecipes(recipes) {
   });
 }
 
+export function filterRecipes(recipes, recipeFilter) {
+  const currentSearchString = recipeFilter.wildcard.toLowerCase();
+
+  return recipes.filter(recipe => {
+    if (recipe.name.toLowerCase().includes(currentSearchString)) {
+      return true;
+    }
+
+    let found = false;
+    found = recipe.ingredients.some(ingredient => {
+      return ingredient.toLowerCase().includes(currentSearchString);
+    });
+    return found;
+  });
+}
+
 export function firstIngredients(ingredients, n = 3) {
   let ingredientsStr = [].concat(ingredients).slice(0, n).join(', ');
 

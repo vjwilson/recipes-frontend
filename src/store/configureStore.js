@@ -1,11 +1,32 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from '../reducers';
+import getUsersSaga from '../sagas/recipes.saga.js';
+
+// mount it on the Store
+// const store = createStore(
+//   rootReducer,
+//   initialState,
+//   compose(
+//     applyMiddleware(sagaMiddleware),
+//     window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//   )
+// );
 
 export default function configureStore(initialState) {
-  return createStore(
-    rootReducer,
-    initialState,
-    window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+  // create the saga middleware
+  const sagaMiddleware = createSagaMiddleware();
+
+  return {
+    ...createStore(
+      rootReducer,
+      initialState,
+      compose(
+        applyMiddleware(sagaMiddleware),
+        window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      )
+    ),
+    runSaga: sagaMiddleware.run
+  }
 }

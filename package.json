@@ -46,14 +46,17 @@
     "react-redux": "^5.0.5",
     "react-router": "^3.0.0",
     "redux": "^3.7.0",
+    "redux-saga": "^0.15.4",
     "whatwg-fetch": "2.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",
     "babel-core": "6.17.0",
     "babel-loader": "6.2.5",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-latest": "6.16.0",
     "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-3": "^6.24.1",
     "babel-register": "6.16.3",
     "chai": "3.5.0",
     "chalk": "1.1.3",

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as recipeActions from '../../actions/recipeActions';
 import * as recipeFilterActions from '../../actions/recipeFilterActions';
 
 import SearchBox from '../Search/SearchBox';
@@ -14,7 +15,7 @@ export class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      recipes: [],
+      recipes: this.props.recipes.data,
       visibleRecipes: [],
       searchOptions: {
         searchString: this.props.recipeFilter.wildcard
@@ -25,13 +26,14 @@ export class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    getRecipes()
-      .then((results) => {
-        this.setState({
-          recipes: [...results],
-          visibleRecipes: [...results]
-        });
-    });
+console.log('componentDidMount',this.props.recipes);
+    // getRecipes()
+    //   .then((results) => {
+    //     this.setState({
+    //       recipes: [...results],
+    //       visibleRecipes: [...results]
+    //     });
+    // });
   }
 
   updateSearchState(event) {
@@ -44,32 +46,36 @@ export class HomePage extends React.Component {
   }
 
   render() {
-    const visibleRecipes = searchRecipes(this.state.recipes, this.props.recipeFilter);
-
     return (
       <div className="container">
         <h1>Browse Recipes</h1>
         <SearchBox searchOptions={this.props.recipeFilter} onChange={this.updateSearchState} />
-        <RecipeList recipes={visibleRecipes} />
+        {this.props.recipes.isFetching && <p>Waiting to load recipes...</p>}
+        <RecipeList recipes={this.props.recipes.data} />
       </div>
     );
   }
 }
 
 HomePage.propTypes = {
+  recipes: PropTypes.object.isRequired,
   recipeFilter: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
+    recipes: state.recipes,
     recipeFilter: state.recipeFilter
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(recipeFilterActions, dispatch)
+    actions: {
+      recipeActions: bindActionCreators(recipeActions, dispatch),
+      recipeFilterActions: bindActionCreators(recipeFilterActions, dispatch)
+    }
   };
 }
 

@@ -1,7 +1,7 @@
 	# Recipes Frontend
 
-<img src="https://api.travis-ci.org/vjwilson/recipes-frontend.svg?branch=master" alt="TravisCI build status tag" />
-[<img src="https://coveralls.io/repos/github/vjwilson/recipes-frontend/badge.svg?branch=master" alt="Coveralls test coverage status" />](https://coveralls.io/github/vjwilson/recipes-frontend?branch=master)
+<a href="https://travis-ci.org/vjwilson/recipes-frontend"><img src="https://api.travis-ci.org/vjwilson/recipes-frontend.svg?branch=master" alt="TravisCI build status tag" /></a>
+<a href="https://coveralls.io/github/vjwilson/recipes-frontend?branch=master"><img src="https://coveralls.io/repos/github/vjwilson/recipes-frontend/badge.svg?branch=master" alt="Coveralls test coverage status" /></a>
 
 This is the Node/Express API for a recipes app.
 

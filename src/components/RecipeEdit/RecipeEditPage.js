@@ -63,7 +63,7 @@ class RecipeEditPage extends React.Component {
     this.setState({ recipe: newRecipe });
   }
 
-  recipeFormIsValid() {
+  recipeIsValid() {
     let formIsValid = true;
     let errors = {};
 
@@ -89,7 +89,7 @@ class RecipeEditPage extends React.Component {
   saveRecipe(event) {
     event.preventDefault();
 
-    if (!this.recipeFormIsValid()) {
+    if (!this.recipeIsValid()) {
       return;
     }
 
@@ -97,6 +97,7 @@ class RecipeEditPage extends React.Component {
     saveRecipe(this.state.recipe)
       .then(() => this.redirect())
       .catch((error) => {
+console.log('catch?')
         alert(`${error} Recipe could not be saved. Try again.`);
         this.setState({ saving: false });
       });

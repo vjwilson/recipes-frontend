@@ -10,7 +10,7 @@ export function authLogin(credentials) {
 export function authStore(profile) {
   if (profile.email && profile.token) {
     profile.username = profile.email.substring(0, profile.email.indexOf('@'));
-    localStorage.setItem('profile', JSON.stringify(profile));
+    window.localStorage.setItem('profile', JSON.stringify(profile));
     return profile;
   } else {
     return {};
@@ -19,7 +19,7 @@ export function authStore(profile) {
 
 export function authRetrieve() {
   try {
-    const profile = JSON.parse(localStorage.getItem('profile'));
+    const profile = JSON.parse(window.localStorage.getItem('profile'));
     return profile;
   }
   catch(e) {
@@ -28,7 +28,7 @@ export function authRetrieve() {
 }
 
 export function authLogout() {
-  localStorage.setItem('profile', '');
+  window.localStorage.setItem('profile', '');
 }
 
 function login(url, credentials) {

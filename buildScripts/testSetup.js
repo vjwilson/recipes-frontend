@@ -23,6 +23,15 @@ global.navigator = {
   userAgent: 'node.js'
 };
 
+window.localStorage = window.sessionStorage = {
+  getItem: function (key) {
+    return this[key];
+  },
+  setItem: function (key, value) {
+    this[key] = value;
+  }
+};
+
 documentRef = document;  //eslint-disable-line no-undef
 
 // Disable webpack features that Mocha doesn't understand

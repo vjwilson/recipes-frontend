@@ -26,6 +26,8 @@ describe('Auth API', function() {
 
       const loginResponse = authLogin(credentials);
 
+      expect(loginResponse instanceof Promise).to.be.true;
+
       const lastCall = fetchMock.lastCall();
       expect(lastCall[1].method).to.equal('post');
       expect(lastCall[1].body).to.equal(JSON.stringify(credentials));

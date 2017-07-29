@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const IngredientsListItem = ({ ingredient, onRemove }) => {
   function removeItem(event) {
@@ -22,7 +23,7 @@ const IngredientsListItem = ({ ingredient, onRemove }) => {
 
 IngredientsListItem.propTypes = {
   ingredient: PropTypes.string.isRequired,
-  onRemove: React.PropTypes.func.isRequired
+  onRemove: PropTypes.func.isRequired
 };
 
 export default IngredientsListItem;

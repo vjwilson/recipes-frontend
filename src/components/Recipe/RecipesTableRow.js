@@ -1,5 +1,7 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
+
 import { firstIngredients, firstWords } from '../../selectors/selectors';
 
 const RecipesTableRow = ({ recipe, onDelete }) => {
@@ -28,7 +30,7 @@ const RecipesTableRow = ({ recipe, onDelete }) => {
 
 RecipesTableRow.propTypes = {
   recipe: PropTypes.object.isRequired,
-  onDelete: React.PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired
 };
 
 export default RecipesTableRow;

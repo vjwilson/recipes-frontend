@@ -1,4 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import RecipesTableRow from './RecipesTableRow';
 import {sortRecipes} from '../../selectors/selectors';
 
@@ -27,7 +29,7 @@ const RecipesTable = ({ recipes, onDelete }) => {
 
 RecipesTable.propTypes = {
   recipes: PropTypes.array.isRequired,
-  onDelete: React.PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired
 };
 
 export default RecipesTable;

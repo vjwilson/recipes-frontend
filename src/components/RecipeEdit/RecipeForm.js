@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import IngredientsList from '../Ingredients/IngredientsList';
 
 import '../common/form.css';
@@ -51,13 +53,13 @@ const RecipeForm = ({recipe, onSave, onChange, addIngredient, removeIngredient, 
 };
 
 RecipeForm.propTypes = {
-  recipe: React.PropTypes.object.isRequired,
-  onSave: React.PropTypes.func.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  addIngredient: React.PropTypes.func.isRequired,
-  removeIngredient: React.PropTypes.func.isRequired,
-  saving: React.PropTypes.bool,
-  errors: React.PropTypes.object
+  recipe: PropTypes.object.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  addIngredient: PropTypes.func.isRequired,
+  removeIngredient: PropTypes.func.isRequired,
+  saving: PropTypes.bool,
+  errors: PropTypes.object
 };
 
 export default RecipeForm;

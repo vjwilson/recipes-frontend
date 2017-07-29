@@ -1,4 +1,5 @@
 import React from 'react';
+
 import SearchBox from '../Search/SearchBox';
 import RecipeList from '../Recipe/RecipeList';
 import { searchRecipes } from '../Search/searchService';

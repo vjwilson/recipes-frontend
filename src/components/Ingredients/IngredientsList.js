@@ -1,4 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import IngredientsListItem from './IngredientsListItem';
 
 const IngredientsList = ({ingredients, onRemove}) => {
@@ -13,7 +15,7 @@ const IngredientsList = ({ingredients, onRemove}) => {
 
 IngredientsList.propTypes = {
   ingredients: PropTypes.array.isRequired,
-  onRemove: React.PropTypes.func.isRequired
+  onRemove: PropTypes.func.isRequired
 };
 
 export default IngredientsList;

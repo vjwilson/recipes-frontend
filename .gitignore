@@ -43,3 +43,6 @@ seed.sql
 .env
 .DS_Store
 db.json
+
+# generated style files
+src/**/*.css

@@ -1,0 +1,16 @@
+// colors
+$primary-color: #ffe332;
+$secondary-color: #7888de;
+$gray-extra-light: #ffe0e0;
+
+// for high-contrast, but not solid blacks, see:
+// http://www.uxmatters.com/mt/archives/2007/01/applying-color-theory-to-digital-displays.php
+// Raw umber (#333300) provides excellent color contrast on white background
+$blackish: #333300;
+
+// animations
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

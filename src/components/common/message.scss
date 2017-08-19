@@ -1,5 +1,7 @@
+@import 'assets/styles/shared.scss';
+
 .alert--error {
-  background-color: #ffe0e0;
+  background-color: $gray-extra-light;
   color: #ff0000;
   margin-bottom: 1em;
   padding: .5em 1em;

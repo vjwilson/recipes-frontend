@@ -1,3 +1,5 @@
+@import 'assets/styles/shared.scss';
+
 html {
   box-sizing: border-box;
 }
@@ -7,6 +9,7 @@ html {
 }
 
 body {
+  color: $blackish;
   font-family: sans-serif;
   font-size: 16px;
 }
@@ -23,10 +26,10 @@ body {
   margin-left: auto;
   margin-right: auto;
   max-width: 1200px;
-}
 
-.container--centered h1 {
-  text-align: center;
+  h1 {
+    text-align: center;
+  }
 }
 
 .admin-table {
@@ -48,7 +51,7 @@ a:visited {
 
 a:hover,
 a:active {
-  color: #7888de;
+  color: $secondary-color;
 }
 
 .deleteRecipe {
@@ -63,7 +66,7 @@ a.deleteRecipe:visited {
 }
 
 .primary-link {
-  background-color: #ffe332;
+  background-color: $primary-color;
   color: #393939;
   padding: .5em 1em;
   text-decoration: none;

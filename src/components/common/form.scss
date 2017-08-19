@@ -1,3 +1,5 @@
+@import 'assets/styles/shared.scss';
+
 .input-field,
 .input-field--inline {
   font-size: 1rem;
@@ -22,7 +24,7 @@
 
 .input-field button,
 .input-field--inline button {
-  background-color: #ffe332;
+  background-color: $primary-color;
   border: 0;
   color: #696969;
   font-size: 1rem;

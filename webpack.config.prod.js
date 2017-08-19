@@ -19,6 +19,12 @@ export default {
     filename: '[name].[chunkhash].js'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+
     // Generate an external CSS file with a hash in the filename
     new ExtractTextPlugin('[name].[contenthash].css'),
 

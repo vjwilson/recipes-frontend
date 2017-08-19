@@ -1,0 +1,94 @@
+@import 'assets/styles/shared.scss';
+
+.navbar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  @media screen and (min-width: 768px) {
+    & {
+      flex-direction: row;
+      padding-left: 2rem;
+    }
+  }
+
+  &__logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  &__menu {
+    display: flex;
+    font-weight: bold;
+    list-style-type: none;
+    padding-left: 0;
+
+    @media screen and (min-width: 768px) {
+      & {
+        padding-left: 2rem;
+      }
+    }
+  }
+
+  &__menu-item {
+    display: inline-block;
+    padding: .5em 1em;
+  }
+
+  &__menu-link {
+    padding: .5em 1em;
+    text-decoration: none;
+  }
+
+  &__menu-link:link,
+  &__menu-link:visited {
+    color: #696969;
+    transition: background-color .3s;
+  }
+
+  &__menu-link:hover,
+  &__menu-link:active {
+    background-color: $primary-color;
+    color: #393939;
+  }
+
+  &__menu-link.active {
+    border-bottom: 4px solid $primary-color;
+    color: #393939;
+  }
+
+  &__block {
+    display: flex;
+    list-style-type: none;
+
+    @media screen and (min-width: 768px) {
+      & {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__text,
+  &__link {
+    display: inline-block;
+    padding: .5em 1em;
+  }
+
+  &__link {
+    background-color: $primary-color;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+
+  &__link:link,
+  &__link:visited {
+    color: #696969;
+  }
+
+  &__link:hover,
+  &__link:active {
+    background-color: #e6ca19;
+    color: #393939;
+  }
+}

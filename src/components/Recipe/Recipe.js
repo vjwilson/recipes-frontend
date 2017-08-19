@@ -18,9 +18,9 @@ class Recipe extends React.Component {
           <p>{this.props.recipe.author}</p>
         </header>
         <div className="card__body">
-          <h2>Ingredients</h2>
+          <h3>Ingredients</h3>
           <ItemList items={this.props.recipe.ingredients} />
-          <h2>Directions</h2>
+          <h3>Directions</h3>
           <p>{this.props.recipe.directions}</p>
         </div>
       </article>

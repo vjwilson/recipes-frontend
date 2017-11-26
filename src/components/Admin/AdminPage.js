@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
+import RestrictedPage from '../RestrictedPage/RestrictedPage';
 import RecipesTable from '../Recipe/RecipesTable';
 
 import { getRecipes, deleteRecipe } from '../../api/recipeApi';
 
-class AdminPage extends React.Component {
+export class AdminPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -54,4 +55,4 @@ class AdminPage extends React.Component {
   }
 }
 
-export default AdminPage;
+export default RestrictedPage(AdminPage);

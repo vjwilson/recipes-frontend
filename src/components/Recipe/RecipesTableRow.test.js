@@ -1,8 +1,9 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import RecipesTableRow from './RecipesTableRow';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 describe('RecipesTableRow component', function() {
   let props;
@@ -44,7 +45,11 @@ describe('RecipesTableRow component', function() {
   });
 
   it('should output the appropriate data for each table cell', function() {
-    const wrapper = mount(<RecipesTableRow {...props} />);
+    const wrapper = mount(
+      <MemoryRouter>
+        <RecipesTableRow {...props} />
+      </MemoryRouter>
+    );
 
     expect(wrapper.childAt(0).text()).to.contain(mockRecipe.name);
     expect(wrapper.childAt(1).text()).to.contain(mockRecipe.author);

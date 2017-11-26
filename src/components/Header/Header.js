@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, IndexLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 import LoginBox from '../Login/LoginBox';
 
@@ -21,9 +21,9 @@ const Header = ({ profile, login, logout, updateFormField, credentials, loginErr
     <nav className="navbar">
       <div className="navbar__logo">Kirkpatrick Recipes</div>
       <ul className="navbar__menu">
-        <li className="navbar__menu-item"><IndexLink to="/" className="navbar__menu-link" activeClassName="active">Browse</IndexLink></li>
-        <li className="navbar__menu-item"><Link to="/categories" className="navbar__menu-link" activeClassName="active">Categories</Link></li>
-        { (profile && profile.token) && <li className="navbar__menu-item"><Link to="/admin" className="navbar__menu-link" activeClassName="active">Admin</Link></li>}
+        <li className="navbar__menu-item"><NavLink to="/" className="navbar__menu-link" activeClassName="active">Browse</NavLink></li>
+        <li className="navbar__menu-item"><NavLink to="/categories" className="navbar__menu-link" activeClassName="active">Categories</NavLink></li>
+        { (profile && profile.token) && <li className="navbar__menu-item"><NavLink to="/admin" className="navbar__menu-link" activeClassName="active">Admin</NavLink></li>}
       </ul>
       <div className="navbar__block">
         {authBlock}

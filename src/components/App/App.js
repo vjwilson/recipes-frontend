@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+import {
+  Route,
+  Switch
+} from 'react-router-dom';
 
 import Header from '../Header/Header';
+import HomePage from '../Home/HomePage';
+import CategoriesPage from '../Categories/CategoriesPage';
+import AdminPage from '../Admin/AdminPage';
+import RecipeEditPage from '../RecipeEdit/RecipeEditPage';
 
 import { authLogin, authStore, authRetrieve, authLogout } from '../../api/authApi';
 
@@ -46,7 +53,7 @@ export class App extends React.Component {
             token: result.token
           });
           this.setState({ profile: profile });
-          browserHistory.push('/admin');
+          this.props.history.push('/admin');
         }
       })
       .catch((errors) => {
@@ -58,21 +65,27 @@ export class App extends React.Component {
     event.preventDefault();
     authLogout();
     this.setState({ profile: {} });
-    browserHistory.push('/');
+    this.props.history.push('/');
   }
 
   render() {
     return (
       <div className="container">
         <Header profile={this.state.profile} credentials={this.state.credentials} login={this.loginAction} logout={this.logoutAction} updateFormField={this.updateFormField} />
-        {this.props.children}
+        <Switch>
+          <Route path="/" component={HomePage} exact />
+          <Route path="/categories" component={CategoriesPage} exact />
+          <Route path="/admin" component={AdminPage} exact />
+          <Route path="/recipe/new" component={RecipeEditPage} exact />
+          <Route path="/recipe/:id/edit" component={RecipeEditPage} exact />
+        </Switch>
       </div>
     );
   }
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default App;

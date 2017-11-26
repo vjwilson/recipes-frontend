@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
 // import toastr from 'toastr';
+
+import RestrictedPage from '../RestrictedPage/RestrictedPage';
 import RecipeForm from './RecipeForm';
 
 import { getOneRecipe, saveRecipe } from '../../api/recipeApi';
 
-class RecipeEditPage extends React.Component {
+export class RecipeEditPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      recipeId: this.props.params.id, // from the path '/recipe/:id/edit'
+      recipeId: this.props.match.params.id, // from the path '/recipe/:id/edit'
       recipe: {
         name: '',
         author: '',
@@ -106,7 +107,7 @@ class RecipeEditPage extends React.Component {
   redirect() {
     alert('Course saved successfully.', 'Success!');
     this.setState({ saving: false });
-    browserHistory.push('/admin');
+    this.props.history.push('/admin');
   }
 
   render() {
@@ -127,7 +128,8 @@ class RecipeEditPage extends React.Component {
 }
 
 RecipeEditPage.propTypes = {
-  params: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
-export default RecipeEditPage;
+export default RestrictedPage(RecipeEditPage);

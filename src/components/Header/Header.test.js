@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
@@ -60,7 +61,11 @@ describe('Header component', function() {
     });
 
     it('should have two items in its nav menu', function() {
-      const mountedOutput = mount(<Header {...props} />);
+      const mountedOutput = mount(
+        <MemoryRouter>
+          <Header {...props} />
+        </MemoryRouter>
+      );
 
       const menuItems = mountedOutput.find('.navbar__menu-item');
 
@@ -68,7 +73,11 @@ describe('Header component', function() {
     });
 
     it('should have a link to categories in the last menu item', function() {
-      const mountedOutput = mount(<Header {...props} />);
+      const mountedOutput = mount(
+        <MemoryRouter>
+          <Header {...props} />
+        </MemoryRouter>
+      );
 
       const menuLink = mountedOutput.find('.navbar__menu-item').last().find(Link);
 
@@ -103,7 +112,11 @@ describe('Header component', function() {
     });
 
     it('should have three items in its nav menu', function() {
-      const mountedOutput = mount(<Header {...props} />);
+      const mountedOutput = mount(
+        <MemoryRouter>
+          <Header {...props} />
+        </MemoryRouter>
+      );
 
       const menuItems = mountedOutput.find('.navbar__menu-item');
 
@@ -111,7 +124,11 @@ describe('Header component', function() {
     });
 
     it('should have a link to admin in the last menu item', function() {
-      const mountedOutput = mount(<Header {...props} />);
+      const mountedOutput = mount(
+        <MemoryRouter>
+          <Header {...props} />
+        </MemoryRouter>
+      );
 
       const menuLink = mountedOutput.find('.navbar__menu-item').last().find(Link);
 
@@ -132,7 +149,11 @@ describe('Header component', function() {
     });
 
     it('should call login function if no authenticated use', function() {
-      const wrapper = mount(<Header {...props} />);
+      const wrapper = mount(
+        <MemoryRouter>
+          <Header {...props} />
+        </MemoryRouter>
+      );
 
       const authButton = wrapper.find('.form--inline');
 
@@ -146,7 +167,11 @@ describe('Header component', function() {
         id: 3,
         username: 'gmtester'
       };
-      const wrapper = mount(<Header {...props} />);
+      const wrapper = mount(
+        <MemoryRouter>
+          <Header {...props} />
+        </MemoryRouter>
+      );
 
       const authLink = wrapper.find('.navbar__block button');
 

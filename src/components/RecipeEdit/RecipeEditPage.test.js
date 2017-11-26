@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
-import RecipeEditPage from './RecipeEditPage';
+import { RecipeEditPage } from './RecipeEditPage';
 import RecipeForm from './RecipeForm';
 
 describe('RecipeEditPage component', function() {
@@ -18,8 +18,10 @@ describe('RecipeEditPage component', function() {
 
   beforeEach(function() {
     props = {
-      params: {
-        id: mockRecipe.id
+      match: {
+        params: {
+          id: mockRecipe.id
+        }
       }
     };
 

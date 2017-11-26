@@ -1,7 +1,8 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
-import AdminPage from './AdminPage';
+import { AdminPage } from './AdminPage';
 import fetchMock from 'fetch-mock';
 
 describe('AdminPage component', function() {
@@ -49,13 +50,21 @@ describe('AdminPage component', function() {
   describe('initial render', function() {
 
     it('should render the static component', function() {
-      const shallowOutput = shallow(<AdminPage {...props} />);
+      const shallowOutput = shallow(
+        <MemoryRouter>
+          <AdminPage {...props} />
+        </MemoryRouter>
+      );
 
       expect(shallowOutput).to.have.length(1);
     });
 
     it('should a title that contains the name', function() {
-      const wrapper = mount(<AdminPage {...props} />);
+      const wrapper = mount(
+        <MemoryRouter initialEntries={[ '/admin' ]}>
+          <AdminPage {...props} />
+        </MemoryRouter>
+      );
 
       expect(wrapper.find('h1').text()).to.contain('Admin');
     });

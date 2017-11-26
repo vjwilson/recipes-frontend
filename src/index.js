@@ -1,12 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, browserHistory } from 'react-router';
-import routes from './routes';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+//import routes from './routes';
+import App from './components/App/App';  //eslint-disable-line import/no-named-as-default
 
 import './index.css';
 
 
 render(
-  <Router history={browserHistory} routes={routes} />,
+  <Router>
+    <Route path="/" component={App} />
+  </Router>,
   document.getElementById('app')
 );

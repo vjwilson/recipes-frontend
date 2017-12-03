@@ -9,7 +9,8 @@ describe('Recipe component', function() {
   const mockRecipeIncomplete = {
     id: 1,
     name: 'B',
-    ingredients: ['one', 'two', 'three']
+    ingredients: ['one', 'two', 'three'],
+    categories: []
   };
 
   const mockRecipeComplete = {
@@ -17,7 +18,8 @@ describe('Recipe component', function() {
     name: 'B',
     author: 'John Lennon',
     ingredients: ['one', 'two', 'three'],
-    directions: 'Mix well. Chill.'
+    directions: 'Mix well. Chill.',
+    categories: [{ id: 1, name: 'Dessert' }]
   };
 
   describe('with incomplete object in props', function() {

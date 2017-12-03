@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ItemList from '../ItemList/ItemList';
+import Pill from '../Pill/Pill';
 
 import '../common/card.css';
 
@@ -15,6 +16,13 @@ class Recipe extends React.Component {
       <article className="card">
         <header className="card__header">
           <h1 className="card__title">{this.props.recipe.name}</h1>
+          <div className="pill-container">
+            {this.props.recipe.categories.map(category => {
+              return (
+                <Pill key={category.id}>{category.name}</Pill>
+              );
+            })}
+          </div>
           <p>{this.props.recipe.author}</p>
         </header>
         <div className="card__body">

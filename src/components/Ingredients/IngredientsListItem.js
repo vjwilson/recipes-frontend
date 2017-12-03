@@ -8,11 +8,11 @@ const IngredientsListItem = ({ ingredient, onRemove }) => {
   }
 
   return (
-    <li className="editable-list__item">
+    <li className="editable-items__item">
       <span>{ingredient}</span>
       <button
         type="button"
-        className="editable-list__remove-button"
+        className="editable-items__remove-button"
         aria-label="Remove ingredient from recipe"
         onClick={removeItem}>
           X

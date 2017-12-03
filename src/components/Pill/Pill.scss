@@ -1,0 +1,18 @@
+@import 'assets/styles/shared.scss';
+
+.pill-container {
+  display: flex;
+}
+
+.pill {
+  background-color: $blackish;
+  border-radius: 10rem;
+  color: $gray-extra-light;
+  font-size: .8rem;
+  margin-right: .6rem;
+  padding: .4em .6em;
+}
+
+.pill:last-of-type {
+  margin-right: 0;
+}

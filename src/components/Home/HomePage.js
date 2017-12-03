@@ -5,6 +5,7 @@ import RecipeList from '../Recipe/RecipeList';
 import { searchRecipes } from '../Search/searchService';
 
 import {getRecipes} from '../../api/recipeApi';
+import {getCategories} from '../../api/categoryApi';
 
 class Home extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Home extends React.Component {
 
     this.state = {
       recipes: [],
+      categories: [],
       searchOptions: {
         searchString: ''
       }
@@ -23,8 +25,12 @@ class Home extends React.Component {
   componentDidMount() {
     getRecipes()
       .then((results) => {
-        this.recipes = [...results];
         this.setState({recipes: results});
+    });
+
+    getCategories()
+      .then((results) => {
+        this.setState({categories: results});
     });
   }
 
@@ -38,11 +44,24 @@ class Home extends React.Component {
   render() {
     const visibleRecipes = searchRecipes(this.state.recipes, this.state.searchOptions);
 
+    const recipesWithCategories = visibleRecipes.map(recipe => {
+      const categoriesForRecipe = recipe.category_ids.reduce((includedCategories, categoryId) => {
+        const foundCategory = this.state.categories.find(category => categoryId === category.id);
+        if (foundCategory) {
+          return includedCategories.concat(foundCategory);
+        } else {
+          return includedCategories;
+        }
+      }, []);
+
+      return Object.assign({}, recipe, { categories: categoriesForRecipe });
+    });
+
     return (
       <div className="container">
         <h1>Browse Recipes</h1>
         <SearchBox searchOptions={this.state.searchOptions} onChange={this.updateSearchState} />
-        <RecipeList recipes={visibleRecipes} />
+        <RecipeList recipes={recipesWithCategories} />
       </div>
     );
   }
